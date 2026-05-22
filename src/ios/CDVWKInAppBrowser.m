@@ -845,6 +845,12 @@ BOOL isExiting = NO;
 
     // We add our own constraints, they should not be determined from the frame.
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    // Custom status bar background, useful when toolbar=no
+    UIView *statusBarBackground = [UIView new];
+    statusBarBackground.translatesAutoresizingMaskIntoConstraints = NO;
+    statusBarBackground.backgroundColor = [self colorFromHexString:@"#747d8c"];
+    [self.view addSubview:statusBarBackground];
     
     self.toolbarBackground = [UIView new];
     // We add our own constraints, they should not be determined from the frame.
@@ -995,6 +1001,14 @@ BOOL isExiting = NO;
         [self.webView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor]
     ]];
 
+    //Status bar background horizontal constraints
+    [NSLayoutConstraint activateConstraints:@[
+      // Left
+      [statusBarBackground.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+      // Right
+      [statusBarBackground.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor]
+    ]];
+
     // Toolbar background horizontal constraints
     [NSLayoutConstraint activateConstraints:@[
         // Left
@@ -1037,10 +1051,16 @@ BOOL isExiting = NO;
     //
     // Case 1: Toolbar and Address label not visible
     if (!toolbarVisible && !addressLabelVisible) {
-        // Webview top to top edge
-        [self.webView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
-        // WebView bottom to bottom edge
-        [self.webView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+        //Status bar background from top edge to safe area top
+        [NSLayoutConstraint activateConstraints:@[
+          [statusBarBackground.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+          [statusBarBackground.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+
+          // Webview starts below the status bar
+          [self.webView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+          // WebView bottom to bottom edge
+          [self.webView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+        ]];
     }
     
     // Case 2: Toolbar visible, Address label not visible
