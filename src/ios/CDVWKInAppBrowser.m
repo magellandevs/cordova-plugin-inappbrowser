@@ -15,6 +15,8 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
+
+    Modifications copyright (c) 2026 Magellandevs
 */
 
 #import "CDVWKInAppBrowser.h"

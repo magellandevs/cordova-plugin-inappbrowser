@@ -24,6 +24,8 @@ description: Open an in-app browser window.
 #
 -->
 
+[//]: # (Updated by magellandevs: 22/05/2026)
+
 # cordova-plugin-inappbrowser
 
 [![npm - Latest](https://img.shields.io/npm/v/cordova-plugin-inappbrowser/latest?label=Latest%20Release%20(npm))](https://npmjs.com/package/cordova-plugin-inappbrowser)

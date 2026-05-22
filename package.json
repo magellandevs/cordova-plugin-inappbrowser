@@ -11,8 +11,7 @@
       "ios"
     ]
   },
-  "repository": "github:apache/cordova-plugin-inappbrowser",
-  "bugs": "https://github.com/apache/cordova-plugin-inappbrowser/issues",
+  "repository": "github:magellandevs/cordova-plugin-inappbrowser",
   "keywords": [
     "cordova",
     "in",
@@ -57,7 +56,7 @@
       }
     }
   },
-  "author": "Apache Software Foundation",
+  "author": "magellandevs",
   "license": "Apache-2.0",
   "devDependencies": {
     "@cordova/eslint-config": "^6.0.1"
